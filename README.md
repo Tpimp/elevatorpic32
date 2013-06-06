@@ -1,4 +1,3 @@
-elevatorpic32
-=============
+Elevator Pic32mx Project:
 
-ElevatorPic32
+This is a team project for Spring term of 2013. CST 347 RTOS -
