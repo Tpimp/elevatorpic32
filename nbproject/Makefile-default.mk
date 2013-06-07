@@ -30,12 +30,12 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=elf
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ElevatorLab.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/elevatorpic32.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/ElevatorLab.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/elevatorpic32.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 # Object Directory
@@ -45,11 +45,11 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/17176491/heap_2.o ${OBJECTDIR}/_ext/1481540018/list.o ${OBJECTDIR}/_ext/1642425384/port.o ${OBJECTDIR}/_ext/1642425384/port_asm.o ${OBJECTDIR}/_ext/1481540018/queue.o ${OBJECTDIR}/_ext/1481540018/tasks.o ${OBJECTDIR}/src/led.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/buttondrv.o ${OBJECTDIR}/src/cn_isr.o ${OBJECTDIR}/src/SystemControl.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/tmr3_isr.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/17176491/heap_2.o.d ${OBJECTDIR}/_ext/1481540018/list.o.d ${OBJECTDIR}/_ext/1642425384/port.o.d ${OBJECTDIR}/_ext/1642425384/port_asm.o.d ${OBJECTDIR}/_ext/1481540018/queue.o.d ${OBJECTDIR}/_ext/1481540018/tasks.o.d ${OBJECTDIR}/src/led.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/buttondrv.o.d ${OBJECTDIR}/src/cn_isr.o.d ${OBJECTDIR}/src/SystemControl.o.d ${OBJECTDIR}/src/timer.o.d ${OBJECTDIR}/src/tmr3_isr.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/17176491/heap_2.o ${OBJECTDIR}/_ext/1481540018/list.o ${OBJECTDIR}/_ext/1642425384/port.o ${OBJECTDIR}/_ext/1642425384/port_asm.o ${OBJECTDIR}/_ext/1481540018/queue.o ${OBJECTDIR}/_ext/1481540018/tasks.o ${OBJECTDIR}/src/led.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/buttondrv.o ${OBJECTDIR}/src/cn_isr.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/tmr3_isr.o ${OBJECTDIR}/src/ButtonControl.o ${OBJECTDIR}/src/tmr5_isr.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/17176491/heap_2.o.d ${OBJECTDIR}/_ext/1481540018/list.o.d ${OBJECTDIR}/_ext/1642425384/port.o.d ${OBJECTDIR}/_ext/1642425384/port_asm.o.d ${OBJECTDIR}/_ext/1481540018/queue.o.d ${OBJECTDIR}/_ext/1481540018/tasks.o.d ${OBJECTDIR}/src/led.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/buttondrv.o.d ${OBJECTDIR}/src/cn_isr.o.d ${OBJECTDIR}/src/timer.o.d ${OBJECTDIR}/src/tmr3_isr.o.d ${OBJECTDIR}/src/ButtonControl.o.d ${OBJECTDIR}/src/tmr5_isr.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/17176491/heap_2.o ${OBJECTDIR}/_ext/1481540018/list.o ${OBJECTDIR}/_ext/1642425384/port.o ${OBJECTDIR}/_ext/1642425384/port_asm.o ${OBJECTDIR}/_ext/1481540018/queue.o ${OBJECTDIR}/_ext/1481540018/tasks.o ${OBJECTDIR}/src/led.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/buttondrv.o ${OBJECTDIR}/src/cn_isr.o ${OBJECTDIR}/src/SystemControl.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/tmr3_isr.o
+OBJECTFILES=${OBJECTDIR}/_ext/17176491/heap_2.o ${OBJECTDIR}/_ext/1481540018/list.o ${OBJECTDIR}/_ext/1642425384/port.o ${OBJECTDIR}/_ext/1642425384/port_asm.o ${OBJECTDIR}/_ext/1481540018/queue.o ${OBJECTDIR}/_ext/1481540018/tasks.o ${OBJECTDIR}/src/led.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/buttondrv.o ${OBJECTDIR}/src/cn_isr.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/tmr3_isr.o ${OBJECTDIR}/src/ButtonControl.o ${OBJECTDIR}/src/tmr5_isr.o
 
 
 CFLAGS=
@@ -66,7 +66,7 @@ LDLIBSOPTIONS=
 FIXDEPS=fixDeps
 
 .build-conf:  ${BUILD_SUBPROJECTS}
-	${MAKE} ${MAKE_OPTIONS} -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/ElevatorLab.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE} ${MAKE_OPTIONS} -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/elevatorpic32.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=32MX360F512L
 MP_LINKER_FILE_OPTION=
@@ -97,6 +97,12 @@ ${OBJECTDIR}/src/tmr3_isr.o: src/tmr3_isr.S  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/tmr3_isr.o.ok ${OBJECTDIR}/src/tmr3_isr.o.err 
 	@${FIXDEPS} "${OBJECTDIR}/src/tmr3_isr.o.d" "${OBJECTDIR}/src/tmr3_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -MMD -MF "${OBJECTDIR}/src/tmr3_isr.o.d"  -o ${OBJECTDIR}/src/tmr3_isr.o src/tmr3_isr.S  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/src/tmr3_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PIC32MXSK=1
 	
+${OBJECTDIR}/src/tmr5_isr.o: src/tmr5_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/src 
+	@${RM} ${OBJECTDIR}/src/tmr5_isr.o.d 
+	@${RM} ${OBJECTDIR}/src/tmr5_isr.o.ok ${OBJECTDIR}/src/tmr5_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/src/tmr5_isr.o.d" "${OBJECTDIR}/src/tmr5_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -MMD -MF "${OBJECTDIR}/src/tmr5_isr.o.d"  -o ${OBJECTDIR}/src/tmr5_isr.o src/tmr5_isr.S  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/src/tmr5_isr.o.asm.d",--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--gdwarf-2,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PIC32MXSK=1
+	
 else
 ${OBJECTDIR}/_ext/1642425384/port_asm.o: ../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX/port_asm.S  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/_ext/1642425384 
@@ -115,6 +121,12 @@ ${OBJECTDIR}/src/tmr3_isr.o: src/tmr3_isr.S  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/tmr3_isr.o.d 
 	@${RM} ${OBJECTDIR}/src/tmr3_isr.o.ok ${OBJECTDIR}/src/tmr3_isr.o.err 
 	@${FIXDEPS} "${OBJECTDIR}/src/tmr3_isr.o.d" "${OBJECTDIR}/src/tmr3_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -MMD -MF "${OBJECTDIR}/src/tmr3_isr.o.d"  -o ${OBJECTDIR}/src/tmr3_isr.o src/tmr3_isr.S  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/src/tmr3_isr.o.asm.d",--gdwarf-2
+	
+${OBJECTDIR}/src/tmr5_isr.o: src/tmr5_isr.S  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/src 
+	@${RM} ${OBJECTDIR}/src/tmr5_isr.o.d 
+	@${RM} ${OBJECTDIR}/src/tmr5_isr.o.ok ${OBJECTDIR}/src/tmr5_isr.o.err 
+	@${FIXDEPS} "${OBJECTDIR}/src/tmr5_isr.o.d" "${OBJECTDIR}/src/tmr5_isr.o.asm.d" -t $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -MMD -MF "${OBJECTDIR}/src/tmr5_isr.o.d"  -o ${OBJECTDIR}/src/tmr5_isr.o src/tmr5_isr.S  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),-MD="${OBJECTDIR}/src/tmr5_isr.o.asm.d",--gdwarf-2
 	
 endif
 
@@ -161,15 +173,15 @@ ${OBJECTDIR}/src/buttondrv.o: src/buttondrv.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/buttondrv.o.d 
 	@${FIXDEPS} "${OBJECTDIR}/src/buttondrv.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/buttondrv.o.d" -o ${OBJECTDIR}/src/buttondrv.o src/buttondrv.c   
 	
-${OBJECTDIR}/src/SystemControl.o: src/SystemControl.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/src 
-	@${RM} ${OBJECTDIR}/src/SystemControl.o.d 
-	@${FIXDEPS} "${OBJECTDIR}/src/SystemControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/SystemControl.o.d" -o ${OBJECTDIR}/src/SystemControl.o src/SystemControl.c   
-	
 ${OBJECTDIR}/src/timer.o: src/timer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/src 
 	@${RM} ${OBJECTDIR}/src/timer.o.d 
 	@${FIXDEPS} "${OBJECTDIR}/src/timer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/timer.o.d" -o ${OBJECTDIR}/src/timer.o src/timer.c   
+	
+${OBJECTDIR}/src/ButtonControl.o: src/ButtonControl.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/src 
+	@${RM} ${OBJECTDIR}/src/ButtonControl.o.d 
+	@${FIXDEPS} "${OBJECTDIR}/src/ButtonControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/ButtonControl.o.d" -o ${OBJECTDIR}/src/ButtonControl.o src/ButtonControl.c   
 	
 else
 ${OBJECTDIR}/_ext/17176491/heap_2.o: ../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MemMang/heap_2.c  nbproject/Makefile-${CND_CONF}.mk
@@ -212,15 +224,15 @@ ${OBJECTDIR}/src/buttondrv.o: src/buttondrv.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/buttondrv.o.d 
 	@${FIXDEPS} "${OBJECTDIR}/src/buttondrv.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/buttondrv.o.d" -o ${OBJECTDIR}/src/buttondrv.o src/buttondrv.c   
 	
-${OBJECTDIR}/src/SystemControl.o: src/SystemControl.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/src 
-	@${RM} ${OBJECTDIR}/src/SystemControl.o.d 
-	@${FIXDEPS} "${OBJECTDIR}/src/SystemControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/SystemControl.o.d" -o ${OBJECTDIR}/src/SystemControl.o src/SystemControl.c   
-	
 ${OBJECTDIR}/src/timer.o: src/timer.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/src 
 	@${RM} ${OBJECTDIR}/src/timer.o.d 
 	@${FIXDEPS} "${OBJECTDIR}/src/timer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/timer.o.d" -o ${OBJECTDIR}/src/timer.o src/timer.c   
+	
+${OBJECTDIR}/src/ButtonControl.o: src/ButtonControl.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/src 
+	@${RM} ${OBJECTDIR}/src/ButtonControl.o.d 
+	@${FIXDEPS} "${OBJECTDIR}/src/ButtonControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/ButtonControl.o.d" -o ${OBJECTDIR}/src/ButtonControl.o src/ButtonControl.c   
 	
 endif
 
@@ -233,15 +245,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/ElevatorLab.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+dist/${CND_CONF}/${IMAGE_TYPE}/elevatorpic32.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mdebugger -D__MPLAB_DEBUGGER_PIC32MXSK=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/ElevatorLab.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PIC32MXSK=1
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mdebugger -D__MPLAB_DEBUGGER_PIC32MXSK=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/elevatorpic32.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PIC32MXSK=1
 	
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/ElevatorLab.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/elevatorpic32.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/ElevatorLab.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION)
-	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/ElevatorLab.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o dist/${CND_CONF}/${IMAGE_TYPE}/elevatorpic32.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION)
+	${MP_CC_DIR}\\xc32-bin2hex dist/${CND_CONF}/${IMAGE_TYPE}/elevatorpic32.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
 

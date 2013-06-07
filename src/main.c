@@ -77,7 +77,7 @@
 #include <FreeRTOS.h>
 #include "task.h"
 #include "queue.h"
-#include "SystemControl.h"
+#include "ButtonControl.h"
 #include "led.h"
 #include "timer.h"
 /* Hardware configuration. */
@@ -95,13 +95,14 @@ int main(void)
     prvSetupHardware();
     initCN();
     INIT_BUTTON_CONTROL();
+    INIT_TIMER5(7,390625);
     INIT_TIMER3(7,390625);
     mPORTDSetBits( BIT_0 | BIT_1 | BIT_2);
     // set strobe_type
     
     //DELAY_COUNT_0 =  DELAY_COUNT_1 = DELAY_COUNT2 = (250 / portTICK_RATE_MS);
-    xTaskCreate(SystemControl,
-            "SystemControl",
+    xTaskCreate(ButtonControl,
+            "BTNCTRL",
             configMINIMAL_STACK_SIZE,
             NULL,
             1,

@@ -1,12 +1,14 @@
 /* 
- * File:   SystemControl.h
+ * File:   ButtonControl.h
  * Author: christopher.dean
  *
  * Created on April 9, 2013, 4:07 PM
+ * ButtonControl- Provides interrupt handeling and button polling for the
+ * PIC32MX Starter Kit and PIC32 Companion Board eflightworks board.
  */
 
-#ifndef SYSTEMCONTROL_H
-#define	SYSTEMCONTROL_H
+#ifndef BUTTONCONTROL_H
+#define	BUTTONCONTROL_H
 
 #ifdef	__cplusplus
 extern "C" {
@@ -29,24 +31,22 @@ extern "C" {
 
 
 // create worker function -Acts as main task for button CN and LED
-void SystemControl();
+void ButtonControl();
 
 
 void ScanRCButtons(DEBOUNCE_DATA * debounce_info, char * task_name);
 
 
 // create static call wrapper (not necessary for next time)
-static void StaticSystemControl()
+static void StaticButtonControl()
 {
     // cast back to unsigned int, then pass by value
-    SystemControl();
+    ButtonControl();
 }
 
-// Define LED_FlashTask
-void LED_FlashTask(void * lednum);
 
 void RCButtonReleased(short buttonreleased, short buttonstate);
 void ButtonPressed(short buttonpressed,short bottonstate);
 void ButtonReleased(short buttonreleased, short buttonstate);
-#endif	/* SYSTEMCONTROL_H */
+#endif	/* BUTTONCONTROL_H */
 

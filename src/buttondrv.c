@@ -7,7 +7,7 @@ xSemaphoreHandle buttonpress = NULL;
 
 BUTTON_CONTROL_MODULE BUTTON_CONTROL;
 
-void __attribute__((interrupt(ipl0), vector(_CHANGE_NOTICE_VECTOR))) vCN_ISR_Wrapper(void);
+void __attribute__((interrupt(ipl0), vector(_CHANGE_NOTICE_VECTOR),nomips16)) vCN_ISR_Wrapper(void);
 
 void initCN(void)
 {
@@ -58,6 +58,7 @@ void DEBOUNCE_TASK(void * debounce_data)
             if(PORTDbits.RD6 == mydata->TARGET_RESULT)
             {
                 BUTTON_CONTROL.ButtonState[0] = mydata->TARGET_RESULT;
+                taskEXIT_CRITICAL();
                 if(!mydata->TARGET_RESULT)
                 {
                     if(mydata->PRESSED_CALLBACK)
@@ -76,6 +77,7 @@ void DEBOUNCE_TASK(void * debounce_data)
             if(PORTDbits.RD7 == mydata->TARGET_RESULT)
             {
                 BUTTON_CONTROL.ButtonState[1] = mydata->TARGET_RESULT;
+                taskEXIT_CRITICAL();
                 if(!mydata->TARGET_RESULT)
                 {
                     if(mydata->PRESSED_CALLBACK)
@@ -94,6 +96,7 @@ void DEBOUNCE_TASK(void * debounce_data)
             if(PORTDbits.RD13 == mydata->TARGET_RESULT)
             {
                 BUTTON_CONTROL.ButtonState[2] = mydata->TARGET_RESULT;
+                taskEXIT_CRITICAL();
                 if(!mydata->TARGET_RESULT)
                 {
                     if(mydata->PRESSED_CALLBACK)
@@ -112,6 +115,7 @@ void DEBOUNCE_TASK(void * debounce_data)
             if(PORTCbits.RC1 == mydata->TARGET_RESULT)
             {
                 BUTTON_CONTROL.ButtonState[3] = mydata->TARGET_RESULT;
+                taskEXIT_CRITICAL();
                 if(!mydata->TARGET_RESULT)
                 {
                     if(mydata->PRESSED_CALLBACK)
@@ -130,6 +134,7 @@ void DEBOUNCE_TASK(void * debounce_data)
             if(PORTCbits.RC2 == mydata->TARGET_RESULT)
             {
                 BUTTON_CONTROL.ButtonState[4] = mydata->TARGET_RESULT;
+                taskEXIT_CRITICAL();
                 if(!mydata->TARGET_RESULT)
                 {
                     if(mydata->PRESSED_CALLBACK)
@@ -143,11 +148,10 @@ void DEBOUNCE_TASK(void * debounce_data)
             }
             break;
         }
-        default: {break;}
+        default: {    taskEXIT_CRITICAL();break;}
     }
     
     vTaskDelete(NULL);
-    taskEXIT_CRITICAL();
 }
 
 

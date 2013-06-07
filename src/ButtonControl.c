@@ -2,7 +2,7 @@
 #include "task.h"
 #include "queue.h"
 #include "semphr.h"
-#include "SystemControl.h"
+#include "ButtonControl.h"
 #include "led.h"
 #include "buttondrv.h"
 
@@ -15,14 +15,24 @@ void ButtonPressed(short buttonpressed,short bottonstate)
 
 void ButtonReleased(short buttonreleased, short buttonstate)
 {
-    TOGGLE_LED(buttonreleased);
+    xTaskCreate(LED_OPEN_SEQUENCE,
+                    "DR_OPN",
+                    configMINIMAL_STACK_SIZE,
+                    NULL,
+                    3,
+                    NULL);
 }
 
 void RCButtonReleased(short buttonreleased, short buttonstate)
 {
-    TOGGLE_LED(buttonreleased);
-    CLEAR_AND_START_TIMER3();
+    xTaskCreate(LED_CLOSE_BLOCKED_SEQUENCE,
+                    "DR_CLS",
+                    configMINIMAL_STACK_SIZE,
+                    NULL,
+                    3,
+                    NULL);
 }
+
 
 void ScanRCButtons(DEBOUNCE_DATA * debounce_info, char * task_name)
 {
@@ -52,18 +62,25 @@ void ScanRCButtons(DEBOUNCE_DATA * debounce_info, char * task_name)
     }
 }
 
-void SystemControl()
+void ButtonControl()
 {
-    // system control params and
+    // INITIALIZE and Create local Variables for ButtonControl Task
+    char task_name[] = "DBNCE0"; // Task name for debounce task create
 
-    char task_name[] = "DBNCE0";
-    DEBOUNCE_DATA DEBOUNCE_LIST[3];
-    DEBOUNCE_DATA RC_DEBOUNCE_LIST[2];
+    DEBOUNCE_DATA DEBOUNCE_LIST[3]; // used to track debounce state (INTs)
+    DEBOUNCE_DATA RC_DEBOUNCE_LIST[2]; // used to track debounce state (Poll)
+
+    // Set the target_button to debounce
+    // one for each button to bebounced (can all happen synchronously)
     DEBOUNCE_LIST[0].TARGET_BUTTON =0;
     DEBOUNCE_LIST[1].TARGET_BUTTON =1;
     DEBOUNCE_LIST[2].TARGET_BUTTON =2;
     RC_DEBOUNCE_LIST[0].TARGET_BUTTON = 3;
     RC_DEBOUNCE_LIST[1].TARGET_BUTTON = 4;
+
+    // Initialize the function pointer CALLBACKS for the button press
+    // Call backs will recieve the button number and state,
+    // the CALLBACK then can perform any actions necessary with the current info
     DEBOUNCE_LIST[0].PRESSED_CALLBACK = 0;
     DEBOUNCE_LIST[1].PRESSED_CALLBACK = 0;
     DEBOUNCE_LIST[2].PRESSED_CALLBACK = 0;
@@ -74,16 +91,16 @@ void SystemControl()
     DEBOUNCE_LIST[2].RELEASED_CALLBACK = &ButtonReleased;
     RC_DEBOUNCE_LIST[0].RELEASED_CALLBACK = &RCButtonReleased;
     RC_DEBOUNCE_LIST[1].RELEASED_CALLBACK = &RCButtonReleased;
+
+    // Initially all buttons are sitting at 1 (pull-ups)
     DEBOUNCE_LIST[0].TARGET_RESULT = 1;
     DEBOUNCE_LIST[1].TARGET_RESULT = 1;
     DEBOUNCE_LIST[2].TARGET_RESULT = 1;
     RC_DEBOUNCE_LIST[0].TARGET_RESULT = 1;
     RC_DEBOUNCE_LIST[1].TARGET_RESULT = 1;
-    // create the task handle
-    //create state tracking variables
-
+    
     /************************************************************************
-     * SystemControl- Monitors the buttonpress semaphore then handles
+     * ButtonControl- Monitors the buttonpress semaphore then handles
      * button presses by creating a debounce task for each new button press.
      * The debounce function can also be passed a callback and in this case
      * is passed the ButtonPressed and ButtonReleased methods above.
@@ -94,9 +111,13 @@ void SystemControl()
         if(pdTRUE == xSemaphoreTake(buttonpress, 1/portTICK_RATE_MS )) // if not waiting for a key to be released
         {
             taskENTER_CRITICAL();
+            // Set the new debounce target
             DEBOUNCE_LIST[BUTTON_CONTROL.TARGET_BUTTON].TARGET_RESULT = BUTTON_CONTROL.BUTTON_ACTION;
+            // Mark the button as "not" available so the ISR will ignore it
             BUTTON_CONTROL.ButtonAvailable[BUTTON_CONTROL.TARGET_BUTTON] = FALSE;
+            // Create the task name for the current debounce task
             task_name[5] = (char)('0' + BUTTON_CONTROL.TARGET_BUTTON );
+            // Create the DEBOUNCE Task to debounce the current button
             xTaskCreate(DEBOUNCE_TASK,
                         task_name,
                         configMINIMAL_STACK_SIZE,
@@ -107,24 +128,9 @@ void SystemControl()
         }
         else
         {
+            // if no interrupts to handle, scan RC buttons
             ScanRCButtons(RC_DEBOUNCE_LIST,task_name);
         }
-    }
-}
-
-
-// LED_FlashTask takes a void * (casted integer pointer)
-// While task is running continuosly toggle the LED on and off
-// hand off to idle task for 500 Ms in between each toggle
-void LED_FlashTask(void * lednum)
-{
-    int led = *(int*)lednum;
-    while(1)
-    {
-        // toggl the led number on
-        led_drive(led,2,0);
-        // Nothing left to do so
-        // idle the process for 500MS
-        vTaskDelay(500 /portTICK_RATE_MS);
+        //vTaskDelay((portTickType)50);
     }
 }

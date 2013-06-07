@@ -27,6 +27,7 @@ extern "C" {
 #include <stdint.h>
 #include <task.h>
 #include <semphr.h>
+#include "timer.h"
 
 
 static const unsigned int INVALID_LED_INDEX = 1;
@@ -41,7 +42,9 @@ void TOGGLE_LED(short lednumber);
 void TURN_ON_LED(short lednumber);
 short READ_LED_STATE(short lednumber);
 void NextIteration(void);
-void LED_TOGGLER(void);
+void LED_OPEN_SEQUENCE(void);
+void LED_CLOSE_SEQUENCE(void);
+void LED_CLOSE_BLOCKED_SEQUENCE(void);
 
 
 #endif	/* LED_H */

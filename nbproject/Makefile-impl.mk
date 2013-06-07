@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ElevatorLab
+PROJECTNAME=elevatorpic32
 
 # Active Configuration
 DEFAULTCONF=default

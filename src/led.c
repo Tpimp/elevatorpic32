@@ -169,7 +169,83 @@ void TURN_ON_LED(short lednumber)
     }
 }
 
-void LED_TOGGLER(void)
+void LED_OPEN_SEQUENCE(void)
 {
-//    if(xSemaphoreTake())
+    static short LED_CURRENT_STATE;
+    LED_CURRENT_STATE = 0;
+    while(LED_CURRENT_STATE >= 0)
+    {
+        CLEAR_AND_START_TIMER3();
+        if(xSemaphoreTake(TIMER3_RDY, portMAX_DELAY))
+        {
+            switch(LED_CURRENT_STATE)
+            {
+                case 0:{}
+                case 1:{}
+                case 2:{TURN_OFF_LED(LED_CURRENT_STATE); LED_CURRENT_STATE++; break;}
+                default:
+                {
+                    LED_CURRENT_STATE = -1;
+                    break;
+                }
+            }
+        }
+    }
+    vTaskDelete(NULL);
+}
+
+void LED_CLOSE_SEQUENCE(void)
+{
+    static short LED_CURRENT_STATE;
+    LED_CURRENT_STATE = 2;
+    while(LED_CURRENT_STATE >= 0)
+    {
+        CLEAR_AND_START_TIMER3();
+        if(xSemaphoreTake(TIMER3_RDY, portMAX_DELAY))
+        {
+            switch(LED_CURRENT_STATE)
+            {
+                case 0:{}
+                case 1:{}
+                case 2:{TURN_ON_LED(LED_CURRENT_STATE); LED_CURRENT_STATE--; break;}
+                default:
+                {
+                    LED_CURRENT_STATE = -1;
+                    break;
+                }
+            }
+        }
+    }
+    vTaskDelete(NULL);
+}
+
+void LED_CLOSE_BLOCKED_SEQUENCE(void)
+{
+    static short LED_CURRENT_STATE;
+    LED_CURRENT_STATE = 0;
+    while(LED_CURRENT_STATE >= 0)
+    {
+        CLEAR_AND_START_TIMER3();
+        if(xSemaphoreTake(TIMER3_RDY, portMAX_DELAY))
+        {
+            switch(LED_CURRENT_STATE)
+            {
+                case 0:{TURN_ON_LED(2); LED_CURRENT_STATE++; break;}
+                case 1:{TURN_ON_LED(1); LED_CURRENT_STATE++; break;}
+                case 2:{TURN_OFF_LED(1); LED_CURRENT_STATE++; break;}
+                case 3:{TURN_ON_LED(1); LED_CURRENT_STATE++; break;}
+                case 4:{TURN_OFF_LED(1); LED_CURRENT_STATE++; break;}
+                case 5:{TURN_OFF_LED(2); LED_CURRENT_STATE++; break;}
+                default:
+                {
+                    T3CONbits.ON = 0;
+                    IFS0bits.T3IF = 0;
+                    LED_CURRENT_STATE = -1;
+                    TMR3 = 0;
+                    break;
+                }
+            }
+        }
+    }
+    vTaskDelete(NULL);
 }
