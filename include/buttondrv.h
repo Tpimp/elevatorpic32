@@ -8,8 +8,14 @@
 #include <task.h>
 #include <semphr.h>
 
-extern xSemaphoreHandle buttonpress;
+// Define the Buttn Macros
+#define PENTHOUSE2 = (0)
+#define PENTHOUSE1 = (1)
+#define GROUNDFLR =  (2)
+#define OPEN_DOOR =  (3)
+#define CLOSE_DOOR = (4)
 
+extern xSemaphoreHandle buttonpress;
 
 typedef struct button_control_state
 {

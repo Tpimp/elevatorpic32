@@ -201,6 +201,7 @@ void LED_CLOSE_SEQUENCE(void)
     while(LED_CURRENT_STATE >= 0)
     {
         CLEAR_AND_START_TIMER3();
+        // Sleep until TIMER 3 is ready
         if(xSemaphoreTake(TIMER3_RDY, portMAX_DELAY))
         {
             switch(LED_CURRENT_STATE)

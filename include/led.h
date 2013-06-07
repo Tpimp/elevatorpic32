@@ -8,17 +8,6 @@
 #ifndef LED_H
 #define	LED_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
-
-#ifdef	__cplusplus
-}
-#endif
-
 /* Hardware include. */
 #include <xc.h>
 /* Standard includes. */
@@ -29,6 +18,12 @@ extern "C" {
 #include <semphr.h>
 #include "timer.h"
 
+// Define elevator LED types
+#define ELEVATOR_TOP = (0)
+#define ELEVATOR_MID = (1)
+#define ELEVATOR_BTM = (2)
+#define ELEVATOR_UP =  (3)
+#define ELEVATOR_DWN = (4)
 
 static const unsigned int INVALID_LED_INDEX = 1;
 static const unsigned int INVALID_LED_COMMAND = 2;

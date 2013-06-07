@@ -19,6 +19,7 @@
       <itemPath>include/buttondrv.h</itemPath>
       <itemPath>include/timer.h</itemPath>
       <itemPath>include/ButtonControl.h</itemPath>
+      <itemPath>include/DriveControl.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -43,6 +44,7 @@
       <itemPath>src/tmr3_isr.S</itemPath>
       <itemPath>src/ButtonControl.c</itemPath>
       <itemPath>src/tmr5_isr.S</itemPath>
+      <itemPath>src/DriveControl.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

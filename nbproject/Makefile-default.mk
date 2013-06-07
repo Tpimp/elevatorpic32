@@ -45,11 +45,11 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/17176491/heap_2.o ${OBJECTDIR}/_ext/1481540018/list.o ${OBJECTDIR}/_ext/1642425384/port.o ${OBJECTDIR}/_ext/1642425384/port_asm.o ${OBJECTDIR}/_ext/1481540018/queue.o ${OBJECTDIR}/_ext/1481540018/tasks.o ${OBJECTDIR}/src/led.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/buttondrv.o ${OBJECTDIR}/src/cn_isr.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/tmr3_isr.o ${OBJECTDIR}/src/ButtonControl.o ${OBJECTDIR}/src/tmr5_isr.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/17176491/heap_2.o.d ${OBJECTDIR}/_ext/1481540018/list.o.d ${OBJECTDIR}/_ext/1642425384/port.o.d ${OBJECTDIR}/_ext/1642425384/port_asm.o.d ${OBJECTDIR}/_ext/1481540018/queue.o.d ${OBJECTDIR}/_ext/1481540018/tasks.o.d ${OBJECTDIR}/src/led.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/buttondrv.o.d ${OBJECTDIR}/src/cn_isr.o.d ${OBJECTDIR}/src/timer.o.d ${OBJECTDIR}/src/tmr3_isr.o.d ${OBJECTDIR}/src/ButtonControl.o.d ${OBJECTDIR}/src/tmr5_isr.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/17176491/heap_2.o ${OBJECTDIR}/_ext/1481540018/list.o ${OBJECTDIR}/_ext/1642425384/port.o ${OBJECTDIR}/_ext/1642425384/port_asm.o ${OBJECTDIR}/_ext/1481540018/queue.o ${OBJECTDIR}/_ext/1481540018/tasks.o ${OBJECTDIR}/src/led.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/buttondrv.o ${OBJECTDIR}/src/cn_isr.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/tmr3_isr.o ${OBJECTDIR}/src/ButtonControl.o ${OBJECTDIR}/src/tmr5_isr.o ${OBJECTDIR}/src/DriveControl.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/17176491/heap_2.o.d ${OBJECTDIR}/_ext/1481540018/list.o.d ${OBJECTDIR}/_ext/1642425384/port.o.d ${OBJECTDIR}/_ext/1642425384/port_asm.o.d ${OBJECTDIR}/_ext/1481540018/queue.o.d ${OBJECTDIR}/_ext/1481540018/tasks.o.d ${OBJECTDIR}/src/led.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/buttondrv.o.d ${OBJECTDIR}/src/cn_isr.o.d ${OBJECTDIR}/src/timer.o.d ${OBJECTDIR}/src/tmr3_isr.o.d ${OBJECTDIR}/src/ButtonControl.o.d ${OBJECTDIR}/src/tmr5_isr.o.d ${OBJECTDIR}/src/DriveControl.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/17176491/heap_2.o ${OBJECTDIR}/_ext/1481540018/list.o ${OBJECTDIR}/_ext/1642425384/port.o ${OBJECTDIR}/_ext/1642425384/port_asm.o ${OBJECTDIR}/_ext/1481540018/queue.o ${OBJECTDIR}/_ext/1481540018/tasks.o ${OBJECTDIR}/src/led.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/buttondrv.o ${OBJECTDIR}/src/cn_isr.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/tmr3_isr.o ${OBJECTDIR}/src/ButtonControl.o ${OBJECTDIR}/src/tmr5_isr.o
+OBJECTFILES=${OBJECTDIR}/_ext/17176491/heap_2.o ${OBJECTDIR}/_ext/1481540018/list.o ${OBJECTDIR}/_ext/1642425384/port.o ${OBJECTDIR}/_ext/1642425384/port_asm.o ${OBJECTDIR}/_ext/1481540018/queue.o ${OBJECTDIR}/_ext/1481540018/tasks.o ${OBJECTDIR}/src/led.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/buttondrv.o ${OBJECTDIR}/src/cn_isr.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/tmr3_isr.o ${OBJECTDIR}/src/ButtonControl.o ${OBJECTDIR}/src/tmr5_isr.o ${OBJECTDIR}/src/DriveControl.o
 
 
 CFLAGS=
@@ -183,6 +183,11 @@ ${OBJECTDIR}/src/ButtonControl.o: src/ButtonControl.c  nbproject/Makefile-${CND_
 	@${RM} ${OBJECTDIR}/src/ButtonControl.o.d 
 	@${FIXDEPS} "${OBJECTDIR}/src/ButtonControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/ButtonControl.o.d" -o ${OBJECTDIR}/src/ButtonControl.o src/ButtonControl.c   
 	
+${OBJECTDIR}/src/DriveControl.o: src/DriveControl.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/src 
+	@${RM} ${OBJECTDIR}/src/DriveControl.o.d 
+	@${FIXDEPS} "${OBJECTDIR}/src/DriveControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PIC32MXSK=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/DriveControl.o.d" -o ${OBJECTDIR}/src/DriveControl.o src/DriveControl.c   
+	
 else
 ${OBJECTDIR}/_ext/17176491/heap_2.o: ../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MemMang/heap_2.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/_ext/17176491 
@@ -233,6 +238,11 @@ ${OBJECTDIR}/src/ButtonControl.o: src/ButtonControl.c  nbproject/Makefile-${CND_
 	@${MKDIR} ${OBJECTDIR}/src 
 	@${RM} ${OBJECTDIR}/src/ButtonControl.o.d 
 	@${FIXDEPS} "${OBJECTDIR}/src/ButtonControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/ButtonControl.o.d" -o ${OBJECTDIR}/src/ButtonControl.o src/ButtonControl.c   
+	
+${OBJECTDIR}/src/DriveControl.o: src/DriveControl.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/src 
+	@${RM} ${OBJECTDIR}/src/DriveControl.o.d 
+	@${FIXDEPS} "${OBJECTDIR}/src/DriveControl.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"./include" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/portable/MPLAB/PIC32MX" -I"../FreeRTOS/FreeRTOSV7.4.0/FreeRTOS/Source/include" -I"C:/Users/Christopher/Desktop/CST 347/FreeRTOS-Plus-CLI" -MMD -MF "${OBJECTDIR}/src/DriveControl.o.d" -o ${OBJECTDIR}/src/DriveControl.o src/DriveControl.c   
 	
 endif
 

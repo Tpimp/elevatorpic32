@@ -80,6 +80,7 @@
 #include "ButtonControl.h"
 #include "led.h"
 #include "timer.h"
+#include "DriveControl.h"
 /* Hardware configuration. */
 #pragma config FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FPLLODIV = DIV_1, FWDTEN = OFF
 #pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_2, CP = OFF, BWP = OFF
@@ -97,7 +98,8 @@ int main(void)
     INIT_BUTTON_CONTROL();
     INIT_TIMER5(7,390625);
     INIT_TIMER3(7,390625);
-    mPORTDSetBits( BIT_0 | BIT_1 | BIT_2);
+    InitializeElevator();
+    //mPORTDSetBits( BIT_0 | BIT_1 | BIT_2);
     // set strobe_type
     
     //DELAY_COUNT_0 =  DELAY_COUNT_1 = DELAY_COUNT2 = (250 / portTICK_RATE_MS);
@@ -107,6 +109,12 @@ int main(void)
             NULL,
             1,
             NULL);
+    xTaskCreate(DriveControl,
+            "DRVCTRL",
+            configMINIMAL_STACK_SIZE,
+            NULL,
+            3,
+            &ELEVATOR_TASK);
     /* Start the scheduler so the tasks start executing.  This function should not return. */
     vTaskStartScheduler();
 }

@@ -10,24 +10,12 @@
 #ifndef BUTTONCONTROL_H
 #define	BUTTONCONTROL_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
-
-#ifdef	__cplusplus
-}
-#endif
-
 /* Hardware include. */
 #include <xc.h>
 /* Standard includes. */
 #include <stdint.h>
 #include <plib.h>
 #include "buttondrv.h"
-
 
 
 // create worker function -Acts as main task for button CN and LED

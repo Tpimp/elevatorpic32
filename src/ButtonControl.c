@@ -25,12 +25,7 @@ void ButtonReleased(short buttonreleased, short buttonstate)
 
 void RCButtonReleased(short buttonreleased, short buttonstate)
 {
-    xTaskCreate(LED_CLOSE_BLOCKED_SEQUENCE,
-                    "DR_CLS",
-                    configMINIMAL_STACK_SIZE,
-                    NULL,
-                    3,
-                    NULL);
+    RequestTripElevator(51);
 }
 
 
